@@ -41,11 +41,30 @@ class calend_type(models.Model):
     def __unicode__(self):
         return "%s" % self.title_internal
 
+
+class calend_year(models.Model):
+    title = models.CharField(verbose_name=u'Год',max_length=4,default='')
+    
+    class Meta:
+        verbose_name = u'Год'
+        verbose_name_plural = u'Годы'
+    
+    def __str__(self):
+        return self.title
+    def __unicode__(self):
+        return self.title
+
+    
+
+
+
 class calend_item(models.Model):
     title = models.CharField(verbose_name=u'название',max_length=255)
     date_str = models.CharField(verbose_name=u'Дата',max_length=255)
     place_str = models.CharField(verbose_name=u'Место',max_length=255)
     calend_type = models.ForeignKey(calend_type, on_delete=models.DO_NOTHING, verbose_name=u'Тип')
+    calend_year = models.ForeignKey(calend_year, on_delete=models.DO_NOTHING, verbose_name=u'Год')
+
     order = models.PositiveIntegerField(default=0)
 
     def __str__(self):

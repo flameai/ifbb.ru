@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'mainapp',
     'ckeditor',
     'ckeditor_uploader',
-    'django.contrib.admin',
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -121,3 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CKEDITOR_UPLOAD_PATH="uploads/"
