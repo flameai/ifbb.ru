@@ -1,5 +1,8 @@
 from django.db import models
 
+from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
+
 # Create your models here.
 
 
@@ -53,3 +56,26 @@ class calend_item(models.Model):
     class Meta:
         verbose_name = u'Соревнование в календаре'
         verbose_name_plural = u'Соревнования в календаре'
+
+
+
+class Page(models.Model):
+    title = models.CharField(u'заголовок', max_length=200)
+    slug = models.SlugField(u'слаг', max_length=200, unique=True)
+    content = RichTextUploadingField(u'Контент')
+    url = models.URLField(u'URL', default="", blank=True)
+    order = models.PositiveIntegerField()
+
+    def __str__(self):
+        return u"%s" % self.title
+
+    def __unicode__(self):
+        return u"%s" % self.title
+
+    def save(self, *args, **kwargs):
+        self.url = settings.PAGES_URL + self.slug + "/"
+        super(Page, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = u'страница'
+        verbose_name_plural = u'страницы'
