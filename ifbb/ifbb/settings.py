@@ -31,10 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit_ckeditor',
+    'suit',
+    'suit_redactor',
     'mainapp',
-    'ckeditor',
-    'ckeditor_uploader',
-   'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -122,5 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
-CKEDITOR_UPLOAD_PATH="uploads/"
+PAGES_URL = "http://localhost:8000/pages/"

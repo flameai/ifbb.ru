@@ -1,7 +1,14 @@
 from django.db import models
+from django.conf import settings
 
-from ckeditor_uploader.fields import RichTextUploadingField
-from ckeditor.fields import RichTextField
+
+
+
+#from ckeditor_uploader.fields import RichTextUploadingField
+#from ckeditor.fields import RichTextField
+
+
+
 
 # Create your models here.
 
@@ -81,9 +88,9 @@ class calend_item(models.Model):
 class Page(models.Model):
     title = models.CharField(u'заголовок', max_length=200)
     slug = models.SlugField(u'слаг', max_length=200, unique=True)
-    content = RichTextUploadingField(u'Контент')
-    url = models.URLField(u'URL', default="", blank=True)
+    url = models.URLField(u'URL', default='', blank=True)
     order = models.PositiveIntegerField()
+    text = models.TextField(u'Текст',default='',help_text=u"Текст страницы")
 
     def __str__(self):
         return u"%s" % self.title
@@ -98,3 +105,4 @@ class Page(models.Model):
     class Meta:
         verbose_name = u'страница'
         verbose_name_plural = u'страницы'
+       
