@@ -87,6 +87,8 @@ class calend_item(models.Model):
 
 class Page(models.Model):
     title = models.CharField(u'заголовок', max_length=200)
+    image = models.ImageField(verbose_name=u'Изображение')
+
     slug = models.SlugField(u'слаг', max_length=200, unique=True)
     url = models.URLField(u'URL', default='', blank=True)
     order = models.PositiveIntegerField()

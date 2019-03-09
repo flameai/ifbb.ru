@@ -1,3 +1,7 @@
+
+from django.conf import settings
+
+
 from django.contrib import admin
 
 # Register your models here.
@@ -29,7 +33,7 @@ class PageForm(ModelForm):
 class PageAdmin(ModelAdmin):
     form = PageForm
     fieldsets = [
-      ('Содержание', {'classes': ('full-width',), 'fields': ('title','text','slug','url','order')})
+      ('Содержание', {'classes': ('full-width',), 'fields': ('title','text','slug','url','order','image')})
         ]
     ...
 
