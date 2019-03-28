@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -25,7 +25,7 @@ SECRET_KEY = 'sc#b$opq@w9z6-i&mqke#y@omp9%3^(b_#*e)2@_8os!(1o@h('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]','www2.ifbb.ru']
 
 
 # Application definition
@@ -123,14 +123,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = '/uploads/'
 
-PAGES_URL = "http://localhost:8000/pages/"
-
-
+PAGES_URL = 'http://new2.ifbb.ru/pages/'
 
 
-#STATIC_ROOT = os.path.join(BASE_DIR, '/')
+
+
+STATIC_ROOT ='/home/c6582/www/static/'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
