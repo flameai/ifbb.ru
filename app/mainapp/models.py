@@ -83,7 +83,13 @@ class calend_item(models.Model):
         verbose_name = u'Соревнование в календаре'
         verbose_name_plural = u'Соревнования в календаре'
 
+#  output = ', '.join([q.question_text for q in latest_question_list])
 
+# R = []
+# for q in latest_question_list:
+#     R.append(q.question_text)
+
+# output = ', '.join(R)
 
 class Page(models.Model):
     title = models.CharField(u'заголовок', max_length=200)
