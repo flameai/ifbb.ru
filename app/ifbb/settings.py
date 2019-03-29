@@ -10,6 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+PRODUCTION_SERVERS = ['H3']
+if os.environ['COMPUTERNAME'] in PRODUCTION_SERVERS:
+    PRODUCTION = True
+else:
+    PRODUCTION = False
+
+DEBUG = not PRODUCTION
+TEMPLATE_DEBUG = DEBUG
+
+# ...
+
+if PRODUCTION:
+    DATABASE_HOST = '192.168.1.1'
+else:
+    DATABASE_HOST = 'localhost'
+
+
+
+
+
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -77,12 +98,31 @@ WSGI_APPLICATION = 'ifbb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+
+if PRODUCTION:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/var/run/mysqld/mysqld.sock',
+            'NAME': 'c6582_new3_ifbb_ru',
+            'USER': 'c6582_new3_ifbb_ru',
+            'PASSWORD': 'QuZxuFamgozus25',
+        },
     }
-}
+   
+  
+
+else:
+
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -122,17 +162,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-CKEDITOR_UPLOAD_PATH = '/uploads/'
-
-PAGES_URL = 'http://new2.ifbb.ru/pages/'
-
-
-
-
-STATIC_ROOT ='/home/c6582/www/static/'
-
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
 MEDIA_URL = '/media/'
+
+if PRODUCTION:
+    STATIC_ROOT ='/home/c6582/www/static/'
+    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
+    PAGES_URL = 'http://new3.ifbb.ru/pages/'
+    MEDIA_ROOT = '/home/c6582/www/media/'
+
+else:
+   STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
+   CKEDITOR_UPLOAD_PATH = '/media/ckeditor'
+   PAGES_URL = 'http://localhost:8000/pages/'
+   MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
+
+
+
+
+
+
+
+
+
+
+
+
