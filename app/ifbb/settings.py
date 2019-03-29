@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
 
-PRODUCTION_SERVERS = ['H3']
-if os.environ['COMPUTERNAME'] in PRODUCTION_SERVERS:
+if os.environ['COMPUTERNAME']:
     PRODUCTION = True
 else:
     PRODUCTION = False
