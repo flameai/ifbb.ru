@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
 
-if os.environ['COMPUTERNAME']:
+if os.environ['PROD']:
     PRODUCTION = True
 else:
     PRODUCTION = False
