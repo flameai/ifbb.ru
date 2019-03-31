@@ -26,10 +26,10 @@ if 'PROD' in os.environ:
             'PASSWORD': 'QuZxuFamgozus25',
         },
     }
-    STATIC_ROOT ='/home/c6582/www/static/'
-    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
+    STATIC_ROOT ='/home/c6582/new3.ifbb.ru/www/static/'
+    CKEDITOR_UPLOAD_PATH = '/home/c6582/new3.ifbb.ru/www/media/ckeditor/'
     PAGES_URL = 'http://new3.ifbb.ru/pages/'
-    MEDIA_ROOT = '/home/c6582/www/media/'
+    MEDIA_ROOT = '/home/c6582/new3.ifbb.ru/www/media/'
     
     
 else:
@@ -43,10 +43,10 @@ else:
 
     DEBUG = not PRODUCTION
     TEMPLATE_DEBUG = DEBUG
-    STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
-    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
+    STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static/'
+    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor/'
     PAGES_URL = 'http://localhost:8000/pages/'
-    MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
+    MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media/'
 
 # ...
 
