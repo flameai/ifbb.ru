@@ -41,7 +41,7 @@ SECRET_KEY = 'sc#b$opq@w9z6-i&mqke#y@omp9%3^(b_#*e)2@_8os!(1o@h('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]','www2.ifbb.ru']
+ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]','new3.ifbb.ru']
 
 
 # Application definition
