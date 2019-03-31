@@ -44,7 +44,7 @@ else:
     DEBUG = not PRODUCTION
     TEMPLATE_DEBUG = DEBUG
     STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
-    CKEDITOR_UPLOAD_PATH = '/media/ckeditor'
+    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
     PAGES_URL = 'http://localhost:8000/pages/'
     MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
 
