@@ -13,11 +13,36 @@ import os
 
 if 'PROD' in os.environ:
     PRODUCTION = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/var/run/mysqld/mysqld.sock',
+            'NAME': 'c6582_new3_ifbb_ru',
+            'USER': 'c6582_new3_ifbb_ru',
+            'PASSWORD': 'QuZxuFamgozus25',
+        },
+    }
+    STATIC_ROOT ='/home/c6582/www/static/'
+    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
+    PAGES_URL = 'http://new3.ifbb.ru/pages/'
+    MEDIA_ROOT = '/home/c6582/www/media/'
+    
+    
 else:
     PRODUCTION = False
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
-DEBUG = not PRODUCTION
-TEMPLATE_DEBUG = DEBUG
+    DEBUG = not PRODUCTION
+    TEMPLATE_DEBUG = DEBUG
+    STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
+    CKEDITOR_UPLOAD_PATH = '/media/ckeditor'
+    PAGES_URL = 'http://localhost:8000/pages/'
+    MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
 
 # ...
 
@@ -95,21 +120,6 @@ WSGI_APPLICATION = 'ifbb.wsgi.application'
 
 
 
-if PRODUCTION:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/var/run/mysqld/mysqld.sock',
-            'NAME': 'c6582_new3_ifbb_ru',
-            'USER': 'c6582_new3_ifbb_ru',
-            'PASSWORD': 'QuZxuFamgozus25',
-        },
-    }
-   
-  
-
-else:
 
 
     DATABASES = {
@@ -159,17 +169,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-if PRODUCTION:
-    STATIC_ROOT ='/home/c6582/www/static/'
-    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
-    PAGES_URL = 'http://new3.ifbb.ru/pages/'
-    MEDIA_ROOT = '/home/c6582/www/media/'
 
-else:
-   STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
-   CKEDITOR_UPLOAD_PATH = '/media/ckeditor'
-   PAGES_URL = 'http://localhost:8000/pages/'
-   MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
+
+
+   
 
 
 
