@@ -30,8 +30,6 @@ if 'PROD' in os.environ:
     CKEDITOR_UPLOAD_PATH = '/home/c6582/new3.ifbb.ru/www/media/ckeditor/'
     PAGES_URL = 'http://new3.ifbb.ru/pages/'
     MEDIA_ROOT = '/home/c6582/new3.ifbb.ru/www/media/'
-    
-    
 else:
     PRODUCTION = False
     DATABASES = {
