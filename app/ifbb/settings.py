@@ -11,13 +11,40 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
 
-if os.environ['PROD']:
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+if 'PROD' in os.environ:
     PRODUCTION = True
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/var/run/mysqld/mysqld.sock',
+            'NAME': 'c6582_new3_ifbb_ru',
+            'USER': 'c6582_new3_ifbb_ru',
+            'PASSWORD': 'QuZxuFamgozus25',
+        },
+    }
+    STATIC_ROOT ='/home/c6582/new3.ifbb.ru/www/static/'
+    CKEDITOR_UPLOAD_PATH = '/home/c6582/new3.ifbb.ru/www/media/ckeditor/'
+    PAGES_URL = 'http://new3.ifbb.ru/pages/'
+    MEDIA_ROOT = '/home/c6582/new3.ifbb.ru/www/media/'
 else:
     PRODUCTION = False
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
-DEBUG = not PRODUCTION
-TEMPLATE_DEBUG = DEBUG
+    DEBUG = not PRODUCTION
+    TEMPLATE_DEBUG = DEBUG
+    STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static/'
+    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor/'
+    PAGES_URL = 'http://localhost:8000/pages/'
+    MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media/'
 
 # ...
 
@@ -30,7 +57,6 @@ TEMPLATE_DEBUG = DEBUG
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -41,7 +67,7 @@ SECRET_KEY = 'sc#b$opq@w9z6-i&mqke#y@omp9%3^(b_#*e)2@_8os!(1o@h('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]','www2.ifbb.ru']
+ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]','new3.ifbb.ru']
 
 
 # Application definition
@@ -94,32 +120,6 @@ WSGI_APPLICATION = 'ifbb.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 
-
-if PRODUCTION:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/var/run/mysqld/mysqld.sock',
-            'NAME': 'c6582_new3_ifbb_ru',
-            'USER': 'c6582_new3_ifbb_ru',
-            'PASSWORD': 'QuZxuFamgozus25',
-        },
-    }
-   
-  
-
-else:
-
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -159,17 +159,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-if PRODUCTION:
-    STATIC_ROOT ='/home/c6582/www/static/'
-    CKEDITOR_UPLOAD_PATH = 'C:/djprojects/ifbb/ifbb.ru/www/media/ckeditor'
-    PAGES_URL = 'http://new3.ifbb.ru/pages/'
-    MEDIA_ROOT = '/home/c6582/www/media/'
 
-else:
-   STATIC_ROOT ='C:/djprojects/ifbb/ifbb.ru/www/static'
-   CKEDITOR_UPLOAD_PATH = '/media/ckeditor'
-   PAGES_URL = 'http://localhost:8000/pages/'
-   MEDIA_ROOT = 'C:/djprojects/ifbb/ifbb.ru/www/media'
+
+
+   
 
 
 
