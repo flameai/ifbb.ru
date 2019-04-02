@@ -16,6 +16,8 @@ from .models import calend_type
 from .models import Page
 
 from .models import calend_item
+from .models import Template
+
 from .models import calend_year
 from django.forms import ModelForm
 from django.contrib.admin import ModelAdmin
@@ -53,3 +55,5 @@ admin.site.register(calend_item)
 admin.site.register(calend_year)
 
 admin.site.register(Photo)
+
+admin.site.register(Template)
