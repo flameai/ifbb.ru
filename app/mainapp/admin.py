@@ -9,6 +9,7 @@ from django.contrib import admin
 
 
 from .models import Slider
+from .models import Photo
 
 from .models import calend_type
 
@@ -27,13 +28,17 @@ from suit_redactor.widgets import RedactorWidget
 class PageForm(ModelForm):
     class Meta:
         widgets = {
-            'text': RedactorWidget(editor_options={'lang': 'en'})
+            'text': RedactorWidget(editor_options={'lang': 'ru'})
         }
 
 class PageAdmin(ModelAdmin):
     form = PageForm
     fieldsets = [
-      ('Содержание', {'classes': ('full-width',), 'fields': ('title','text','slug','url','order','image')})
+        (None, {'fields': ('title','seo_title','mainpage','slug','url','extraurl','order','image','template')
+        }),
+
+        ('Содержание', {'classes': ('full-width',), 'fields': ('text',)}),
+      
         ]
     ...
 
@@ -46,3 +51,5 @@ admin.site.register(calend_type)
 admin.site.register(calend_item)
 
 admin.site.register(calend_year)
+
+admin.site.register(Photo)

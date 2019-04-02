@@ -13,6 +13,31 @@ from django.conf import settings
 # Create your models here.
 
 
+
+
+class Template(models.Model):
+    Templates = (
+        (1,u"Главная"),
+        (2,u"Контакты"),
+        (3,u"Общий"),
+        
+    )
+    template = models.IntegerField(verbose_name=u"День недели",choices=Templates)
+   
+    def __str__(self):
+        templatename = {
+            1: "Главная",
+            2: "Контакты",
+            3: "Общий",
+        }
+        return templatename[self.template]
+
+    class Meta:
+        verbose_name = u'Шаблон'
+        verbose_name_plural = u'Шаблоны'
+
+
+
 class Slider(models.Model):
     image = models.ImageField(verbose_name=u'Изображение')
     title_internal = models.CharField(verbose_name=u'Название', max_length=200, help_text=u"Отображается только в адм.части")
@@ -91,14 +116,25 @@ class calend_item(models.Model):
 
 # output = ', '.join(R)
 
+
+
+
+DEFAULT_TEMPLATE_ID = 3
+
 class Page(models.Model):
     title = models.CharField(u'заголовок', max_length=200)
-    image = models.ImageField(verbose_name=u'Изображение')
+    seo_title=models.CharField(u'заголовок SEO', max_length=200,default='', blank=True)
+    image = models.ImageField(verbose_name=u'Изображение',default='',blank=True)
 
     slug = models.SlugField(u'слаг', max_length=200, unique=True)
     url = models.URLField(u'URL', default='', blank=True)
-    order = models.PositiveIntegerField()
-    text = models.TextField(u'Текст',default='',help_text=u"Текст страницы")
+    order = models.PositiveIntegerField(verbose_name=u'Порядок')
+    text = models.TextField(u'Текст',default='',help_text=u"Текст страницы",blank=True)
+    mainpage = models.BooleanField(u'Это Главная', default=False)
+    extraurl=models.URLField(u'ExtraURL', default='', blank=True)
+    template=models.ForeignKey(Template, on_delete=models.DO_NOTHING, verbose_name=u'Шаблон',default=DEFAULT_TEMPLATE_ID,blank=True)
+
+
 
     def __str__(self):
         return u"%s" % self.title
@@ -114,3 +150,22 @@ class Page(models.Model):
         verbose_name = u'страница'
         verbose_name_plural = u'страницы'
        
+class Photo(models.Model):
+    title = models.CharField(u'Название', max_length=200)
+    image = models.ImageField(verbose_name=u'Изображение',default='',blank=True)
+    seo_title=models.CharField(u'заголовок Alt', max_length=200,default='', blank=True)
+    url = models.URLField(u'URL', default='', blank=True)
+    order=models.PositiveIntegerField(verbose_name=u'Порядок')
+    page=models.ForeignKey(Page, on_delete=models.DO_NOTHING, verbose_name=u'Страница')
+
+    def __str__(self):
+        return u"%s" % self.title
+
+    class Meta:
+        verbose_name = u'Фотография'
+        verbose_name_plural = u'Фотографии'
+
+
+
+
+

@@ -12,4 +12,4 @@ def index(request):
 
 def page(request, slug):
     p = get_object_or_404(Page, slug=slug)
-    return render(request, 'mainapp/page.html', locals())
+    return render(request, 'mainapp/page_map.html', locals())

@@ -7,7 +7,8 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Контакты Федерации бодибилдинга и фитнеса Свердловской области</title>
+    <title>{% block title %}{{ section.title }}{% endblock %}
+    </title>
 
     {% load static %}
 
@@ -170,31 +171,22 @@
         <div class="row">
             <div class="col-md-12">
 
-                {% block body %} {% endblock body %}
-                <!--
-                <h4>Штаб-квартира Федерации бодибилдинга и фитнеса Свердловской области</h4>	
-                <p>Мы находимся по адресу г. Екатеринбург ул. Родонитовая 29</p>
-				<p>в здании фитнес-центра Powerhouse Gym</p>
-                <div class="contact-office-img">
-                    <img class="img-responsive" src="images/contacts.jpg" alt="contact-office-img">	
-                </div>
-                <ul class="contact-list">
-                    <li><i class="fa fa-flag" aria-hidden="true"></i><span>620089 г. Екатеринбург ул. Родонитовая 29,</span></li>
-                    <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:ucatova@mail.ru">ucatova@mail.ru</a></li>
-                    <li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><span>+7 343 3812929</span></li>
-					<li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><span>+7 902 8701059</span></li>
-                </ul>
-				
-				</br>
+                {% block body %} 
                 
-                -->
+                {% endblock body %}
+                
             
             </div>
               </div>
     </div>
-    <div class="contacts-map">
-        <img class="img-responsive" src="{% static 'mainapp/images/contacts-map.jpg' %}" alt="contacts-map">
-    </div>
+
+
+    
+
+            {% block map %} 
+                
+            {% endblock map %}
+    
 </section>
   
     <!--SHARE BOX BEGIN-->
