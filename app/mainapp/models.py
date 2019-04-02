@@ -132,7 +132,7 @@ class Page(models.Model):
     text = models.TextField(u'Текст',default='',help_text=u"Текст страницы",blank=True)
     mainpage = models.BooleanField(u'Это Главная', default=False)
     extraurl=models.URLField(u'ExtraURL', default='', blank=True)
-    template=models.ForeignKey(Template, on_delete=models.DO_NOTHING, verbose_name=u'Шаблон',default=DEFAULT_TEMPLATE_ID,blank=True)
+    template=models.ForeignKey(Template, on_delete=models.CASCADE, verbose_name=u'Шаблон',default=DEFAULT_TEMPLATE_ID,blank=True)
 
 
 
