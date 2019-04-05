@@ -1,0 +1,91 @@
+     
+{% extends "mainapp/base.html" %}
+
+{% block title %}{{ p.seo_title }}{% endblock %}
+{% load static %}
+
+
+{%block breadcrumbs%}
+    <!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="index.html">Главная</a>/</li>
+                            <li>Контакты</li>
+                        </ul>
+                        <h1>Контакты</h1>
+						
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+
+{%endblock breadcrumbs%}
+
+
+{% block body %}
+{{p.text | safe}}
+
+{% endblock body %}
+
+
+{% block map %}
+<div class="contacts-map">
+
+<img class="img-responsive" src="{% static 'mainapp/images/contacts-map.jpg' %}" alt="contacts-map">
+
+</div>
+{% endblock map %}
+
+
+
+{%block shareblock%}
+   <!--SHARE BOX BEGIN-->
+
+   <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="share-box">
+    <div class="item">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="title">Поделиться в соцсетях</div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12 text-right">
+                    <ul class="share-socials  wpb_animate_when_almost_visible wpb_fadeInRight fadeInRight wpb_start_animation animated">                        
+
+                    
+                    <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="//yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter,telegram" data-size="s"></div>
+
+
+                    
+						
+						
+					
+						
+					
+						
+						
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <!--SHARE BOX END-->
+{%endblock shareblock%}
