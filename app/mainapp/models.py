@@ -166,6 +166,23 @@ class Photo(models.Model):
         verbose_name_plural = u'Фотографии'
 
 
+       
+class FileModel(models.Model):
+    title = models.CharField(u'Название', max_length=200)
+    upload = models.FileField(upload_to='%y/%m/%d')
+    url = models.URLField(u'URL', default='', blank=True)
+
+
+    def __str__(self):
+        return u"%s" % self.title
+
+    class Meta:
+        verbose_name = u'Файл'
+        verbose_name_plural = u'Файлы'
+    
+    def save(self, *args, **kwargs):
+        self.url = self.upload.url
+        super(FileModel, self).save(*args, **kwargs)
 
 
 

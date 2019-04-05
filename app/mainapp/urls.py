@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path('<slug:slug>/', views.page, name='page'),
+    path('', views.mainpage, name='mainpage')
 ]
 
