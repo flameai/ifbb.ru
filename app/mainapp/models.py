@@ -20,15 +20,17 @@ class Template(models.Model):
         (1,u"Главная"),
         (2,u"Контакты"),
         (3,u"Общий"),
+        (4,u"Новости")
         
     )
-    template = models.IntegerField(verbose_name=u"День недели",choices=Templates)
+    template = models.IntegerField(verbose_name=u"Шаблон",choices=Templates)
    
     def __str__(self):
         templatename = {
             1: "Главная",
             2: "Контакты",
             3: "Общий",
+            4: "Новости"
         }
         return templatename[self.template]
 
@@ -132,7 +134,8 @@ class Page(models.Model):
     text = models.TextField(u'Текст',default='',help_text=u"Текст страницы",blank=True)
     mainpage = models.BooleanField(u'Это Главная', default=False)
     extraurl=models.URLField(u'ExtraURL', default='', blank=True)
-    template=models.ForeignKey(Template, on_delete=models.CASCADE, verbose_name=u'Шаблон',default=DEFAULT_TEMPLATE_ID,blank=True)
+    template=models.PositiveIntegerField(verbose_name=u'Шаблон')
+    
 
 
 
@@ -145,6 +148,15 @@ class Page(models.Model):
     def save(self, *args, **kwargs):
         self.url = settings.PAGES_URL + self.slug + "/"
         super(Page, self).save(*args, **kwargs)
+    def returl(self):
+        if self.extraurl=='':
+            return settings.PAGES_URL + self.slug
+        else:
+            return self.extraurl
+        
+
+
+
 
     class Meta:
         verbose_name = u'страница'

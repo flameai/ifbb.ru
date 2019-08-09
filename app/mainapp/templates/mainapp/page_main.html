@@ -5,52 +5,44 @@
 {% load static %}
 
 
+
 {%block slider%}
 <!--MAIN AMATURE SLIDER END-->
 <div class="msp_post_slider" id="amateurs-slider">
 
         <div class="owl-carousel owl-theme" role="listbox">
         
-            
-            
-            <div class="item msp_post_slide slide-2" style="background-image: " >
-                <div class="slider-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-8">
-                                <h1 class="title">Открытый Чемпионат Урала по бодибилдингу 2019</h1>
-                                <div class="sub-title">
-                                    7 апреля в 12-00
+            {% if slider_list %}
+                        
+                        {% for slider in slider_list %}
+                        
+                        <div class="item msp_post_slide slide-{{slider.order}}" style="background-image: {{slider.image}} " >
+                            <div class="slider-caption">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-8">
+                                            <h1 class="title">{{slider.title_external}}</h1>
+                                            <div class="sub-title">
+                                                {{slider.date_str}}
+                                            </div>
+                                            <a href="{{slider.button_url}}" class="btn">
+                                                Подробнее
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="urfo2019.html" class="btn">
-                                    Подробнее
-                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </div>                            
+                        
+                        
+                        
+                        {% endfor %}
+                        
+                    {% else %}
+                        
+            {% endif %}
             
-            
-            <div class="item msp_post_slide slide-1" >
-                <div class="slider-caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-8">
-                                <h1 class="title">Открытый Кубок Свердловской области по бодибилдингу 2019</h1>
-                                <div class="sub-title">
-                                    13 апреля в 14-00
-                                </div>
-                                <a href="/revda2019.html" class="btn">
-                                    Подробнее
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-           
+       
            
             
         </div>

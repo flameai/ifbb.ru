@@ -11,7 +11,7 @@
     </title>
 
     {% load static %}
-
+    
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="http://cdn.h-team.torbara.com/css/library/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -24,9 +24,26 @@
 <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
 
 
+<style>
 
+        {% if slider_list %}
+                                
+                            {% for slider in slider_list %}
+                                
+.msp_post_slide.slide-{{slider.order}}{
+background: url("..{{ MEDIA_URL }}{{slider.image}}") no-repeat;
+}
+                                
+                                {% endfor %}
+                                
+                            {% else %}
+                                
+        {% endif %}
+            
+        </style>
 
     
+
 </head>
 
 <body>
@@ -108,7 +125,7 @@
 
 
 
-                            <li><a href= {% if page.extraurl is None %} "/pages/{{ page.slug }}/" {% else %} "{{page.extraurl}}" {% endif %}><span>{{page.title}}</span></a></li>
+                            <li><a href= "{{page.returl}}"><span>{{page.title}}</span></a></li>
                         {% endfor %}
                         
                     {% else %}
